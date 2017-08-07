@@ -53,6 +53,46 @@ class LpcRig(object):
 		
 		self.edges[name] = region
 
+	def set_chains(self, name):
+		region = {}
+		edges_init = cmds.ls(sl=True, fl=True)
+		edges_split = self.split_edges_on_chains(edges_init)
+		
+		for i, edges in edges_split.iteritems():
+			cmds.select(edges)
+			vtxs = cmds.ls(cmds.polyListComponentConversion(tv=True), fl=True)
+			region[str(i)] = [v.split('.')[-1] for v in vtxs]
+		
+		self.edges[name] = region
+
+	def is_connected(self, a, b):
+		a_vtxs = cmds.ls(cmds.polyListComponentConversion(a, tv=True), fl=True)
+		b_vtxs = cmds.ls(cmds.polyListComponentConversion(b, tv=True), fl=True)
+		shared_vtxs = [a for a in a_vtxs if a in b_vtxs]
+		if shared_vtxs:
+			return True
+		else:
+			return False
+
+	def get_edge_chain(self, chain, data):
+		for c in chain:
+			connected = [d for d in data if self.is_connected(c, d) and d not in chain]
+			if not connected:
+				continue
+			chain.append(connected[0])
+			data.remove(connected[0])
+			return self.get_edge_chain(chain, data)
+		del data[0]
+		return chain
+		  
+	def split_edges_on_chains(self, data):	
+		chains = {}
+		iter = 0
+		while data:
+			chains[iter] = self.get_edge_chain([data[0]], data)
+			iter += 1
+		return chains
+
 	def save(self, name=''):
 		pass
 
