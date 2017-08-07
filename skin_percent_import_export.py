@@ -1,33 +1,67 @@
-import pickle
+'''
+export:
+    for every mesh:
+        normalize weights
+        for every vertex export weights
 
-def dict_manipulations(dict, path, get=True, set=False):
-    if get == True:
-        with open(path, 'rb') as bone_map:
-            mapping = pickle.loads(dict.read())
-    elif set == True:
-        with open(path, 'wb') as bone_map:
-            pickle.dump(dict, bone_map)
-    else:
-        sys.exit('Command not specified')
-        
-mesh = 'anna_head'
-skluster = 'anna_head_sc'
+import:
+    for every selected mesh:
+        check if skin is saved
+        check if bones in saved data exists
+            if not, print
+        find or create skincluster of the mesh
+        apply skin
+
+'''
+
+
+
+import pickle
+'''
+def num_from_vtx(v):
+    try:
+        prefix = v.split('.')[-1]
+        return int(''.join(chr for chr in prefix if chr.isdigit()))
+    except:
+        message = "Can't extract number from %s" % v
+        sys.exit(message)
+'''
+def get_skin_cluster(mesh):
+    skin_cluster = cmds.ls(cmds.listHistory(mesh),type='skinCluster')
+    if skin_cluster: 
+        skin_cluster = skin_cluster[0]
+    else: skin_cluster = None
+    return skin_cluster
+
 path = 'd:/.work/.chrs/anna/.seith_skin_last_dump/anna_head.txt'
 
-weights = {}
-vtxs = cmds.polyEvaluate(mesh, v=True)
+def export_weights_sp():
+    selected_objects = cmds.ls(selected=True, flatten=True, transforms=True)
+    if not selected_objects:
+        sys.exit('Please, select objects to save skin from')
 
-for id in range(0,vtxs+1):
-    vtx = '%s.vtx[%s]' % (mesh, id)
-    per_vtx_value = []
-    infls = cmds.skinPercent(skluster, vtx, value=True, ib=0.0001, query=True)
-    bones = cmds.skinPercent( skluster, vtx, transform=None, ib=0.0001, query=True)
-    for infl, bone in zip(infls, bones):
-        per_vtx_value.append((bone, infl))
-    weights[vtx] = per_vtx_value
-    
-with open(path, 'wb') as bone_map:
-    pickle.dump(weights, bone_map)
+    objects_and_skin_cluster = {o:get_skin_cluster(o) for o in selected_objects}
+
+    for o, sc in objects_and_skin_cluster.iteritems():
+        if not sc:
+            print 'Np skin cluster found for %s. Skipping.' % o
+            continue
+        weights = {}
+        vtxs = cmds.polyEvaluate(o, v=True)
+        cmds.skinCluster(sc, forceNormalizeWeights=True, edit=True)
+
+        for id in range(0,vtxs+1):
+            vtx = '%s.vtx[%s]' % (o, id)
+            per_vtx_value = []
+            infls = cmds.skinPercent(sc, vtx, value=True, ib=0.0001, query=True)
+            bones = cmds.skinPercent(sc, vtx, transform=None, ib=0.0001, query=True)
+            per_vtx_value = [(b, i) for b, i in zip(bones, infls)]
+            weights[id] = per_vtx_value
+        
+        save_path = s.path.join(path, o+'.txt')
+        with open(save_path, 'wb') as bone_map:
+            pickle.dump(weights, bone_map)
+        print 'saved skin to %s' % save_path
 
 
 
