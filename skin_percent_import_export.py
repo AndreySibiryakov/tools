@@ -62,7 +62,7 @@ def exists(objects):
 
 sp_path = 'd:\\.work\\.chrs\\.sp'
 
-def export_weights_sp():
+def export_weights_sp(*args):
 	
 	global sp_path
 	
@@ -94,7 +94,7 @@ def export_weights_sp():
 		print 'Saved skin for %s' % o
 
 
-def import_weights_sp():
+def import_weights_sp(*args):
 	
 	global sp_path
 	cmds.scriptEditorInfo(sw=True)
@@ -167,12 +167,12 @@ def import_weights_sp():
 		print 'Loaded skin for %s' % o
 	cmds.scriptEditorInfo(sw=False)    
 
-	
-export_weights_sp()
-
-import_weights_sp()
-
-
+#gui    
+cmds.window('Import Export', width=250)
+cmds.columnLayout( adjustableColumn=True )
+cmds.button(label='Import', command=import_weights_sp)
+cmds.button(label='Export', command=export_weights_sp)
+cmds.showWindow()
 
 
 
