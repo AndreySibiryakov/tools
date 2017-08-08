@@ -17,6 +17,8 @@ import:
 
 
 import pickle
+import os
+
 '''
 def num_from_vtx(v):
 	try:
@@ -58,10 +60,13 @@ def exists(objects):
 		print 'Types "str", "list" are accepted only'
 		return False       
 
-path = 'd:/.work/.chrs/anna/.seith_skin_last_dump/anna_head.txt'
+sp_path = 'd:\\.work\\.chrs\\.sp'
 
 def export_weights_sp():
-	selected_objects = cmds.ls(selected=True, flatten=True, transforms=True)
+	
+	global sp_path
+	
+	selected_objects = cmds.ls(selection=True, flatten=True, transforms=True)
 	if not selected_objects:
 		sys.exit('Please, select objects to save skin from')
 
@@ -69,7 +74,7 @@ def export_weights_sp():
 
 	for o, sc in objects_and_skin_cluster.iteritems():
 		if not sc:
-			print 'Np skin cluster found for %s. Skipping.' % o
+			print 'No skin cluster found for %s. Skipping.' % o
 			continue
 		weights = {}
 		vtxs = cmds.polyEvaluate(o, v=True)
@@ -83,21 +88,24 @@ def export_weights_sp():
 			per_vtx_value = [(b, i) for b, i in zip(bones, infls)]
 			weights[id] = per_vtx_value
 		
-		save_path = s.path.join(path, o+'.txt')
+		save_path = os.path.join(sp_path, o+'.txt')
 		with open(save_path, 'wb') as bone_map:
 			pickle.dump(weights, bone_map)
-		print 'saved skin to %s' % save_path
+		print 'Saved skin for %s' % o
 
 
 def import_weights_sp():
-	selected_objects = cmds.ls(selected=True, flatten=True, transforms=True)
+	
+	global sp_path
+	cmds.scriptEditorInfo(sw=True)
+	selected_objects = cmds.ls(selection=True, flatten=True, transforms=True)
 	if not selected_objects:
 		sys.exit('Please, select objects to save skin from')
 	# Check if skin is saved
 	o_path = {}
 	
 	for o in selected_objects:
-		save_path = s.path.join(path, o+'.txt')
+		save_path = os.path.join(sp_path, o+'.txt')
 		if not os.path.exists(save_path):
 			print 'No saved skin cluster found for %s' % o
 		else:
@@ -107,8 +115,8 @@ def import_weights_sp():
 	o_bones = {}
 	bones = []
 	
-	for o, path in o_path.iteritems():
-		with open(path, 'rb') as saved_file:
+	for o, p in o_path.iteritems():
+		with open(p, 'rb') as saved_file:
 			data = pickle.loads(saved_file.read())
 		o_data[o] = data
 		data_values = data.values()
@@ -128,12 +136,12 @@ def import_weights_sp():
 
 	# Check if skin cluster is on onject
 	for o, data in o_data.iteritems():
-		sc = get_skin_cluster()
+		sc = get_skin_cluster(o)
 		if sc:
 			# Maybe there is another more handy way to obtain bones under skin cluster
 			# If yes - compare bones in it and saved
 			# And add if not enough bones
-			sc_bones = cmds.skinPercent(sc, '%s.vtx[*]' % o, transform=None, ib=0.0001, query=True)
+			sc_bones = cmds.skinPercent(sc, '%s.vtx[*]' % o, transform=None, query=True)
 			saved_bones = o_bones[o]
 			missing_bones = [b for b in saved_bones if b not in sc_bones]
 			if missing_bones:
@@ -153,11 +161,39 @@ def import_weights_sp():
 		for id, value in data.iteritems():
 			pr += 1
 			progressInc = cmds.progressBar(progressControl, edit=True, pr=pr)
-			cmds.skinPercent(sc, '%s.vtx[%s] % (o, id)', transformValue=value)
+			cmds.skinPercent(sc, '%s.vtx[%s]' % (o, id), transformValue=value)
 		cmds.progressBar(progressControl, edit=True, endProgress=True) 
-		cmds.deleteUI(progress_window, window=True)    
+		cmds.deleteUI(progress_window, window=True)
+		print 'Loaded skin for %s' % o
+	cmds.scriptEditorInfo(sw=False)    
 
 	
+export_weights_sp()
+
+import_weights_sp()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
