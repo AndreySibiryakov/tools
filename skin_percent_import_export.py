@@ -18,6 +18,7 @@ import:
 
 import pickle
 import os
+import sys
 
 '''
 def num_from_vtx(v):
