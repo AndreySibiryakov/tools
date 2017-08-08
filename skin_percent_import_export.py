@@ -133,6 +133,7 @@ def import_weights_sp(*args):
 			print '%s not found' % bone
 			stop = True
 	if stop:
+		print bones
 		sys.exit('Please, rename or add bones to import weights')
 
 	# Check if skin cluster is on onject
@@ -152,6 +153,7 @@ def import_weights_sp(*args):
 			# If no - assign with bones in saved
 			sc = cmds.skinCluster(o, o_bones[o], mi=4, wt=0)[0]
 
+		vtxs = cmds.polyEvaluate(o, v=True)
 		progress = vtxs+1
 		progress_window = cmds.window(t="importing...")
 		cmds.columnLayout()
