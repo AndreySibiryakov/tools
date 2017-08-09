@@ -9,7 +9,21 @@ import maya.mel as mel
 import random
 import time
 
+'''
+This is commands, I'm aiming at.
+r = LpcRig()
+r.set_region('name')
+# Would combine region and chain
+r.set_chain('name')
 
+# With dialogue window
+r.load()
+r.save()
+
+r.build()
+r.delete()
+
+'''
 
 class LpcRig(object):
 
@@ -93,6 +107,17 @@ class LpcRig(object):
 			iter += 1
 		return chains
 
+	def dict_io(path, dict={}, get=False, set=False):
+		if get:
+			with open(path, 'rb') as dict_path:
+				dict = pickle.loads(dict_path.read())
+				return dict
+		elif set and dict:
+			with open(path, 'wb') as dict_path:
+				pickle.dump(dict, dict_path)
+		else:
+			sys.exit('Command not specified')
+
 	def save(self, name=''):
 		pass
 
@@ -100,10 +125,14 @@ class LpcRig(object):
 		pass
 
 	def delete_rig(self):
-		cmds.delete(self.rig_objects)
+		if self.rig_objects:
+			cmds.delete(self.rig_objects)
+		else:
+			print 'No rig to delete to.'
+			return
 		cmds.delete(self.mesh, ch=True)
 
-	def get_dag_path (self, obj):
+	def get_dag_path(self, obj):
 		'''MARCO GIORDANO'S CODE (http://www.marcogiordanotd.com/)
 		
 		Called by 'get_u_param' function.
@@ -286,31 +315,31 @@ class LpcRig(object):
 	e.set_region('excluded')
 	e.set_chains('test')
 
-	f.dict_io(save_dir+'f_lips', e.edges, set=True)
-	e.edges = f.dict_io(save_dir+'f_chain_lips.txt', get=True)
+	f.dict_io(save_dir+'f_lips', self.edges, set=True)
+	self.edges = f.dict_io(save_dir+'f_chain_lips.txt', get=True)
 
 
-	def build(self)
-		r = lpc.LpcRig(e.mesh)
-		cmds.select(e.mesh)
+	def build(self):
+		if not self.edges:
+			sys.exit('No ')
 		mel.eval("setDeformGeom();")
 
 		a_objects = cmds.ls( '*', flatten=True, transforms=True)
 		cmds.select(clear=True)
 		ctrl_grp = cmds.group(name='curve_ctrls', empty=True)
-		for region in e.edges.keys():
-		    locs = r.set_lpc_for_region(e.edges[region])
+		for region in self.edges.keys():
+		    locs = self.set_lpc_for_region(self.edges[region])
 		    if region != 'excluded':
-		        curve_name = region+r.hi
-		        locs = r.order_locs(locs)
-		        hi_curve = r.create_hi_curve(locs, region)
-		        r.connect_locs_to_curve(locs, hi_curve)
-		        low_curve = r.create_low_curve(region)
+		        curve_name = region+self.hi
+		        locs = self.order_locs(locs)
+		        hi_curve = self.create_hi_curve(locs, region)
+		        self.connect_locs_to_curve(locs, hi_curve)
+		        low_curve = self.create_low_curve(region)
 		        cmds.parent(low_curve, ctrl_grp)
 		        cmds.hide(hi_curve)
 		        cmds.wire(hi_curve, w=low_curve, gw=0, en=1, ce=0, li=0)
 		    # Not so handful, as I expected
-		    # r.create_controls(low_curve)
+		    # self.create_controls(low_curve)
 		b_objects = cmds.ls( '*', flatten=True, transforms=True)
 		rig_objects = [o for o in b_objects if o not in a_objects]
-		r.rig_objects = rig_objects
+		self.rig_objects = rig_objects

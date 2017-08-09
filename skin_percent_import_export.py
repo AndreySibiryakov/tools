@@ -126,14 +126,14 @@ def import_weights_sp(*args):
 			bones += [b[0] for b in values]
 		o_bones[o] = bones
 	
-	stop = False
 	bones = list(set(bones))
+	stop_bones = []
 	for bone in bones:
 		if not cmds.objExists(bone):
 			print '%s not found' % bone
-			stop = True
-	if stop:
-		print bones
+			stop_bones.append(bone)
+	if stop_bones:
+		print stop_bones
 		sys.exit('Please, rename or add bones to import weights')
 
 	# Check if skin cluster is on onject
