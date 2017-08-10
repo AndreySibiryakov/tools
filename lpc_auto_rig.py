@@ -33,13 +33,13 @@ class LpcRig(object):
 		except:
 			print 'A mesh should be selected for the rigging.'
 			return
-		self.edges = {}
+		self.data = {}
 		self.save_dir = 'd:\\.work\\.chrs\\.lps'
-		self.data = data
 		self.curves = []
 		self.hi = '_hi_curve'
 		self.low = '_low_curve'
 		self.rig_objects = []
+		self.spans = 3
 
 	def set_region(self, name, paint=False):
 		sel = cmds.ls(sl=True, fl=True)
@@ -65,7 +65,7 @@ class LpcRig(object):
 			mel.eval("polyColorPerVertex -cdo -rgb 0.0 1.0 1.0;")
 
 		
-		self.edges[name] = region
+		self.data[name] = region
 
 	def set_chains(self, name):
 		region = {}
@@ -77,7 +77,7 @@ class LpcRig(object):
 			vtxs = cmds.ls(cmds.polyListComponentConversion(tv=True), fl=True)
 			region[str(i)] = [v.split('.')[-1] for v in vtxs]
 		
-		self.edges[name] = region
+		self.data[name] = region
 
 	def is_connected(self, a, b):
 		a_vtxs = cmds.ls(cmds.polyListComponentConversion(a, tv=True), fl=True)
@@ -243,7 +243,7 @@ class LpcRig(object):
 
 	def create_low_curve(self, name):
 		cmds.duplicate(name+self.hi, name=name+self.low)
-		return cmds.rebuildCurve(name+self.low, rt=0, s=3)[0]
+		return cmds.rebuildCurve(name+self.low, rt=0, s=self.spans)[0]
 
 	def get_pos(self, a):
 		pos = cmds.xform(a, translation=True,
@@ -298,6 +298,7 @@ class LpcRig(object):
 	        jnts.append(jnt)
 	        cmds.select(clear=True)
 	        c = cmds.sphere(ch=0, o=1, po=0, ax=(0, 1, 0), r=0.2, s=4, nsp=2)[0]
+	        # The cirle appeared to be not visible, and not handy
 	        # c = cmds.circle(ch=0, o=1, nr=(0, 1, 0), r=0.2)[0]
 	        g = cmds.group(c)
 	        cmds.xform(g, t=pos)
@@ -310,25 +311,16 @@ class LpcRig(object):
 	        #cmds.parent(g, general_g)
 	    cmds.skinCluster(jnts, crv)
 
-	e = lpc.Edges()
-	e.set_mesh()
-	e.set_region('excluded')
-	e.set_chains('test')
-
-	f.dict_io(save_dir+'f_lips', self.edges, set=True)
-	self.edges = f.dict_io(save_dir+'f_chain_lips.txt', get=True)
-
-
 	def build(self):
-		if not self.edges:
-			sys.exit('No ')
-		mel.eval("setDeformGeom();")
+		if not self.data:
+			sys.exit('No rig selected. Please, select the one.')
+		self.set_deformation()
 
 		a_objects = cmds.ls( '*', flatten=True, transforms=True)
 		cmds.select(clear=True)
 		ctrl_grp = cmds.group(name='curve_ctrls', empty=True)
-		for region in self.edges.keys():
-		    locs = self.set_lpc_for_region(self.edges[region])
+		for region in self.data.keys():
+		    locs = self.set_lpc_for_region(self.data[region])
 		    if region != 'excluded':
 		        curve_name = region+self.hi
 		        locs = self.order_locs(locs)
@@ -340,6 +332,6 @@ class LpcRig(object):
 		        cmds.wire(hi_curve, w=low_curve, gw=0, en=1, ce=0, li=0)
 		    # Not so handful, as I expected
 		    # self.create_controls(low_curve)
-		b_objects = cmds.ls( '*', flatten=True, transforms=True)
+		b_objects = cmds.ls( '*', flatten=True)
 		rig_objects = [o for o in b_objects if o not in a_objects]
 		self.rig_objects = rig_objects
