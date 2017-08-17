@@ -98,6 +98,7 @@ def export_weights_sp(*args):
 def import_weights_sp(*args):
 	
 	global sp_path
+	# Disable warnings
 	cmds.scriptEditorInfo(sw=True)
 	selected_objects = cmds.ls(selection=True, flatten=True, transforms=True)
 	if not selected_objects:
