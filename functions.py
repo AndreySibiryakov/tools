@@ -44,7 +44,9 @@ Examples:
 
 def get_head(head=''):
 	'''Searches for a transform node named '*_head' in the scene.
-
+	Args:
+		head (str, optional):
+	
 	Returns:
 		str: mesh name with prefix "_head"
 
@@ -77,7 +79,7 @@ def get_teeth(teeth=''):
 			sys.exit('More than one object with the prefix _teeth in the scene \n %s' % meshes) 
 	return teeth
 
-def mapping(mesh, folder, set_mapping=False, cubes=[], mapping={}):
+def mapping(mesh, folder, set_mapping=False, cubes=[], mapping={}, female=False):
 	'''Gets or set bone mapping for a character, bone per vertex correspondance.
 		Since bones are constrained to vertices.
 		And vertices are driven with a blendshapes.
@@ -97,15 +99,19 @@ def mapping(mesh, folder, set_mapping=False, cubes=[], mapping={}):
 	Returns:
 		dict: default or custom bone per vertex correspondance for a '*_head' mesh
 	
-	'''
-
 	if 'head' in mesh:
 		default_map_name = 'head_bones_mapping.txt'
+
 	elif 'teeth' or 'mouth' in mesh:
 		default_map_name = 'teeth_bones_mapping.txt'
+
 	else:
 		sys.exit('No pattern for %s found' % mesh)
-	
+	'''
+	if female:
+		default_map_name = 'female_bones_mapping.txt'
+	else:
+		default_map_name = 'male_bones_mapping.txt'
 	cur_map_name = '%s_%s' % (mesh.split('_')[0], default_map_name)
 
 	default_map_path = os.path.join(folder, default_map_name)
@@ -162,6 +168,15 @@ def get_pos(a):
 						worldSpace=True)	
 	return a_pos
 
+def get_coords(objects):
+	pos = {}
+	for o in objects:
+		o_pos = cmds.xform(o, translation=True,
+						query=True,
+						worldSpace=True)
+		pos[o] = o_pos
+	return pos
+
 def compare_pos(a, b):
 	a_pos = cmds.xform(a, translation=True,
 							query=True,
@@ -170,10 +185,7 @@ def compare_pos(a, b):
 							query=True,
 							worldSpace=True)
 	
-	a_v = MVector(a_pos)
-	b_v = MVector(b_pos)
-	
-	if a_v == b_v:
+	if MVector(a_pos) == MVector(b_pos):
 		return True
 	else:
 		return False
@@ -210,15 +222,17 @@ def update_match(mapping, cubes):
 			sys.exit('Cube %s not found' % cube)
 	return upd_match			 
 		
-def get_closest(cube):
-	head = get_head()
-	vtxs = cmds.polyEvaluate(head, v=True)
+def get_closest(element, obj=''):
+	if not obj:
+		obj = get_head()
+	vtxs = cmds.polyEvaluate(obj, v=True)
 	
 	check_value = float('inf')
 	current_vtx = ''
-		
+	element_pos = get_pos(element)
+	
 	for vtx in range(0, vtxs+1):
-		l = get_length(get_pos(head+'.vtx[%s]' % vtx), get_pos(cube))
+		l = get_length(get_pos(obj+'.vtx[%s]' % vtx), element_pos)
 		if l < check_value:
 			check_value = l
 			match_l = vtx 
@@ -273,8 +287,8 @@ def set_bones(mesh, bone_mapping):
 
 def get_closest_vtx_bone_match(obj, jnts):
 	''''''
-	vtxs_pos = get_vtxs_world_position_dict(obj)
-	jnts_pos = get_world_position_dict(jnts)	
+	vtxs_pos = get_vtxs_coords(obj)
+	jnts_pos = get_coords(jnts)	
 	
 	match = {}
 	
@@ -287,7 +301,7 @@ def get_closest_vtx_bone_match(obj, jnts):
 			if vtx_length < check_value:
 				check_value = vtx_length
 				current_vtx = vtx 
-		match[jnt] = current_vtx
+		match['.vtx[%s]' % current_vtx] = jnt
 	return match
 
 def set_bip_rom():
@@ -547,7 +561,7 @@ def duplicate_blendshapes(bl, mesh):
 			new_name = cmds.rename(d_name[0], mesh+'_'+b_digit)
 			renamed.append(new_name)
 		else:
-			new_name = cmds.rename(d_name[0], mesh+'_')
+			new_name = cmds.rename(d_name[0], mesh+'_'+bl_mesh)
 			renamed.append(new_name)
 	return renamed
 
@@ -1006,6 +1020,7 @@ def divide_mesh(template_mesh, divided_mesh, threshold=3):
 		diff_coords = calc_coords(template_coords[vtx_id], div_coords[vtx_id], sub=True)
 		neg_blend_coord = [x*neg_blend_values[vtx_id] for x in diff_coords]
 		cmds.xform(l_mesh+'.vtx[%s]' % vtx_id, t=neg_blend_coord, r=True)
+	print 'Divided', divided_mesh
 	return [l_mesh, r_mesh]
 
 def get_neibour_faces(face):
@@ -1057,6 +1072,8 @@ def get_faces(mesh):
 
 def set_facefx_scale():
 	
+	start, end = get_timeline()
+
 	jnts = get_joints()
 	meshes = get_meshes()
 	reset(meshes)
@@ -1089,7 +1106,7 @@ def set_facefx_scale():
 		oc = cmds.orientConstraint(jnt, loc_name)
 		constrs.append(oc[0])
 		
-	cmds.bakeResults(locs, time=(0,600), sm=True)
+	cmds.bakeResults(locs, time=(start, end+1), sm=True)
 	cmds.delete(constrs)
 
 	# Freeze transformation
@@ -1107,7 +1124,7 @@ def set_facefx_scale():
 	cmds.select(meshes)
 	import_weights()
 	 
-	cmds.bakeResults(jnts, time=(0,600), sm=True)
+	cmds.bakeResults(jnts, time=(start, end+1), sm=True)
 	cmds.delete(locs)   
 
 def get_texture(mesh):
@@ -1230,6 +1247,11 @@ def print_shader_info():
 	for m in get_meshes():
 		print m, get_shader_info(m)
 
+def get_timeline():
+	start = cmds.playbackOptions(min=True, query=True)
+	end = cmds.playbackOptions(max=True, query=True)
+	return int(start), int(end)
+
 def bake_animation_joints_to_locators(jnts=[]):
 	'''First part of the operation, that consists of two steps.
 	The second one is a function called "bake_animation_locators_to_joints"
@@ -1243,43 +1265,53 @@ def bake_animation_joints_to_locators(jnts=[]):
 	Returns:
 		dict: joint:locator mapping. Used later when returning an animation back
 	'''
+	start, end = get_timeline()
+
 	if not jnts:
 		jnts = get_joints()
 	mapping = {}
 	constrs = []
+	# group_name = 'tmp_locs'
 	
 	for jnt in jnts:
 		cmds.select(clear=True)
 		loc_name = cmds.spaceLocator(name=jnt+'_LOC')[0]
 		pc = cmds.pointConstraint(jnt, loc_name)
 		oc = cmds.orientConstraint(jnt, loc_name)
-		sc = cmds.scaleConstraint(jnt, loc_name)
+		# sc = cmds.scaleConstraint(jnt, loc_name)
 		constrs.append(pc[0])
 		constrs.append(oc[0])
-		constrs.append(sc[0])
+		# constrs.append(sc[0])
 		mapping[jnt]=loc_name
-	cmds.bakeResults([l for j, l in mapping.iteritems()], time=(0,600), sm=True)
+	cmds.bakeResults([l for j, l in mapping.iteritems()], time=(start, end+1), sm=True)
 	cmds.delete(constrs)
+	# cmds.group([l for l in mapping.values()], name=group_name)
 	return mapping
 
-def bake_animation_locators_to_joints(mapping):
+def bake_animation_locators_to_joints(data):
 	'''Second part of the operation, that consists of two steps.
 	The first one is a function called "bake_animation_joints_to_locators"
 
 	Args:
-		mapping (dict): joint:locator mapping.
+		data (dict, list): joint:locator data.
 
 	Returns:
 		none:
 	'''
-	for jnt, loc in mapping.iteritems():
+	# Convert list of objects to mapping.
+	# When locators are imported in the other file
+	if isinstance(data, list):
+		data = {l[:-4]:l for l in data}
+
+	start, end = get_timeline()
+
+	for jnt, loc in data.iteritems():
 		cmds.pointConstraint(loc, jnt)
 		cmds.orientConstraint(loc, jnt)
-		cmds.scaleConstraint(loc, jnt)
-	cmds.bakeResults([j for j, l in mapping.iteritems()], time=(0,600), sm=True)
-	cmds.delete([loc for jnt, loc in mapping.iteritems()])  
+		# cmds.scaleConstraint(loc, jnt)
+	cmds.bakeResults([j for j, l in data.iteritems()], time=(start, end+1), sm=True)
+	cmds.delete([loc for jnt, loc in data.iteritems()])  
 
-# Get zones for a blendshape split from a skin cluster
 def get_sc_multi(a):
 	'''Get a multiplier from a skinned object based on the bone per vertex influences.
 		A skin serves as a masked regions for further splitting blendshapes.
@@ -1292,77 +1324,203 @@ def get_sc_multi(a):
 	Returns:
 		dict: with a following structure {bone:{vertex_id:bone_influence}}
 	'''
-    sc = f.get_skin_cluster(a)
-    if not sc:
-        exit_message = 'No skin cluster on the %s' % a
-        sys.exit(exit_message)
-    bones = cmds.skinCluster(sc, wi=True, q=True)
-    vtxs_range = cmds.polyEvaluate(a, v=True)
-    sc_multi = {}
-    
-    for bone in bones:
-        per_bone_multi = {}
-        
-        for id in range(0,vtxs_range+1):
-            infl = cmds.skinPercent(sc, 
-                                '%s.vtx[%s]' % (a, id), 
-                                transform=bone, 
-                                ib=0.0001, 
-                                query=True)
-            if not infl or infl == 0:
-                continue
-            per_bone_multi[str(id)] = round(infl, 5)
-        if not per_bone_multi:
-            continue
-        sc_multi[bone] = per_bone_multi
-    if not sc_multi:
-        sys.exit('Bones under the skin cluster do not have influences on any vertex')
-    else:
-        return sc_multi
-        
+	sc = get_skin_cluster(a)
+	if not sc:
+		exit_message = 'No skin cluster on the %s' % a
+		sys.exit(exit_message)
+	bones = cmds.skinCluster(sc, wi=True, q=True)
+	vtxs_range = cmds.polyEvaluate(a, v=True)
+	sc_multi = {}
+	
+	for bone in bones:
+		per_bone_multi = {}
+		
+		for id in range(0,vtxs_range+1):
+			infl = cmds.skinPercent(sc, 
+								'%s.vtx[%s]' % (a, id), 
+								transform=bone, 
+								ib=0.0001, 
+								query=True)
+			if not infl or infl == 0:
+				continue
+			per_bone_multi[str(id)] = round(infl, 5)
+		if not per_bone_multi:
+			continue
+		sc_multi[bone] = per_bone_multi
+	if not sc_multi:
+		sys.exit('Bones under the skin cluster do not have influences on any vertex')
+	else:
+		return sc_multi
+		
 def get_diff_coords(a, b):
-    diff = {}
-    ids = [id for id in a.keys()]
-    
-    for id in ids:
-        if a[id] == b[id]:
-            continue
-        diff_coords = calc_coords(a[id], b[id], sub=True)
-        diff[id] = diff_coords
-    return diff
+	diff = {}
+	ids = [id for id in a.keys()]
+	
+	for id in ids:
+		if a[id] == b[id]:
+			continue
+		diff_coords = calc_coords(a[id], b[id], sub=True)
+		diff[id] = diff_coords
+	return diff
 
 def set_local_coords(mesh, coords):
-    for vtx_id, coords in coords.iteritems():
-        cmds.xform( mesh+'.vtx[%s]' % vtx_id, t=coords, r=True)
+	for vtx_id, coords in coords.iteritems():
+		cmds.xform( mesh+'.vtx[%s]' % vtx_id, t=coords, r=True)
+
 
 def split_blendshape(a, b):
-	'''
+	'''Skin of an a object in used to divide the b blendshape on a zones.
+		Each joint influence becomes the separate blendshape element.
 
 	Args:
-		a (str): object name
+		a (str): object with a skin cluster
+		b (str): blendshape name that will be divided
 
 	Returns:
-		dict: with a following structure {bone:{vertex_id:bone_influence}}
+		None:
 	'''
-    a_coords = get_vtxs_coords(a, relative=True)
-    b_coords = get_vtxs_coords(b, relative=True)  
-    diff_coords = get_diff_coords(a_coords, b_coords)
-    
-    sc_multi = get_sc_multi(a)
-    
-    for bone in sc_multi.keys():
-        per_bone_multi = sc_multi[bone]
-        
-        diff_coords_multi = {}
-        
-        for id, multi in per_bone_multi.iteritems():
-            # If position of a identical to b
-            if not id in diff_coords.keys():
-                continue
-            elif multi == 1:
-                diff_coords_multi[id] = diff_coords[id]
-            else:
-                diff_coords_multi[id] = [coord*multi for coord in diff_coords[id]]
-        
-        duplicated = cmds.duplicate(a, name=b+'_'+bone)[0]
-        set_local_coords(duplicated, diff_coords_multi)   
+	a_coords = get_vtxs_coords(a, relative=True)
+	b_coords = get_vtxs_coords(b, relative=True)  
+	diff_coords = get_diff_coords(a_coords, b_coords)
+	
+	sc_multi = get_sc_multi(a)
+	
+	b_group = b+'_divided'
+	cmds.group(n=b_group, empty=True)
+	for bone in sc_multi.keys():
+		per_bone_multi = sc_multi[bone]
+		
+		diff_coords_multi = {}
+		
+		for id, multi in per_bone_multi.iteritems():
+			# If position of a identical to b
+			if not id in diff_coords.keys():
+				continue
+			elif multi == 1:
+				diff_coords_multi[id] = diff_coords[id]
+			else:
+				diff_coords_multi[id] = [coord*multi for coord in diff_coords[id]]
+		
+		duplicated = cmds.duplicate(a, name=b+'_'+bone)[0]
+		set_local_coords(duplicated, diff_coords_multi)
+		cmds.parent(duplicated, b_group) 
+
+
+def batch_split_blendshapes():
+	'''Splits blendshapes on a zones provided by skin influence.
+		Blendshapes selected first, 
+		the template with a skin cluster - the last.
+
+	Args:
+		None:
+
+	Returns:
+		None:
+	'''
+
+	objects = cmds.ls(sl=True, fl=True, tr=True)
+	a = objects[-1]
+	objects.remove(a)
+
+	for o in objects:
+		split_blendshape(a, o)
+		print o, 'done' 
+
+
+def split_blendshapes_xy_axis(a, b, zx=0, zy=0, cut=0):
+	'''Split blendshape on two. Movement is divided by axis.
+	The first gets x, z/2 movement from original mesh,
+	the second gets y, z/2. 
+		Positive or negative translation are cut if cut is set to 1 or -1
+
+	Args:
+		a (str): neutral mesh name
+		b (str): blendshape name that will be divided
+		zx (float, optional): Z axis translation multiplier added to "X" mesh
+		zy (float, optional): Z axis translation multiplier added to 'Y' mesh
+		cut (int, optional): positive or negative value, 
+			that will be cut from Y axis if met conditions.
+			No cut if 0.
+
+	Returns:
+		None:
+	'''
+	a_coords = get_vtxs_coords(a, relative=True)
+	b_coords = get_vtxs_coords(b, relative=True)  
+	diff_coords = get_diff_coords(a_coords, b_coords)
+	x_mesh = cmds.duplicate(a, name=b+'_x')[0]
+	y_mesh = cmds.duplicate(a, name=b+'_y')[0]
+
+	for vtx_id, coords in diff_coords.iteritems():
+		x_m_coords = [coords[0], 0, coords[-1]*zx]
+		# Cuts positive or negative value from transform
+		if cut > 0 < coords[1] or cut < 0 > coords[1]:
+			y_cut = 0
+		else:
+			y_cut = coords[1]
+		y_m_coords = [0, y_cut, coords[-1]*zy]
+		cmds.xform(x_mesh+'.vtx[%s]' % vtx_id, t=x_m_coords, r=True)
+		cmds.xform(y_mesh+'.vtx[%s]' % vtx_id, t=y_m_coords, r=True)
+
+
+def select_bad_joints(mesh, limit=3):
+	'''
+	Seperates bad ones from auto generated joints that have no useful influence on a skin
+	'''
+	sc = get_skin_cluster(mesh)
+	jnts = cmds.skinCluster(sc, query=True, inf=True)
+	bad_jnts = list(jnts)
+	start, end = get_timeline()
+	attrs = ['translateX', 'translateY', 'translateZ', 'rotateX', 'rotateY', 'rotateZ']	
+		
+	for jnt in jnts:
+		
+		for attr in attrs:
+			if jnt in bad_jnts:
+				
+				for time in range(start, end+1):
+					if time == start:
+						init_value = cmds.getAttr('%s.%s' % (jnt, attr), time=time)
+					if time != start:
+						value = cmds.getAttr('%s.%s' % (jnt, attr), time=time)
+						if not (init_value-limit) < value < (init_value+limit):
+							bad_jnts.remove(jnt)
+							break
+			else:
+				break
+	if bad_jnts:
+		cmds.select(bad_jnts)
+	else:
+		print 'No bad joints found.'
+
+
+def print_fx_graph(obj):
+	bl = get_blendshape_node(obj)
+	start, end = get_timeline()
+	
+	for time in xrange(start, (end+1)):
+	    cmds.currentTime(time)
+	    bl_names = cmds.blendShape(bl, target=True, query=True)
+	    bl_values = cmds.blendShape(bl, weight=True, query=True)
+	    
+	    for name, value in zip(bl_names, bl_values):
+	        if value == 1:
+	            print name, time
+
+
+def orient_driv():
+	a_jnts = ['driv_Bip01_Neck', 'driv_Bip01_Head']
+	b_jnts = ['Bip01_Neck', 'Bip01_Head']
+	i_jnt = 'driv_Bip01_Neck1'
+
+	cs = []
+	if exists(a_jnts+b_jnts+[i_jnt]):
+		
+		for a, b in zip(a_jnts, b_jnts):
+			cs.append(cmds.orientConstraint(b, a, mo=True))
+			
+		cs.append(cmds.orientConstraint(a_jnts, i_jnt, mo=True, w=0.5))
+		return cs
+	else:
+		print 'Not done. Some of the joints not in scene.'
+
