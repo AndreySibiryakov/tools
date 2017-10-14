@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 '''
 Maya class for combining poses splitted on two sides: left and right.
 	Used it to restore emotions after auto skinning process
@@ -18,8 +16,6 @@ import maya.cmds as cmds
 import sys
 
 __author__ = "Andrey Sibiryakov"
-__license__ = "MIT"
-__version__ = "0.1"
 __email__ = "comcommac@gmail.com"
 
 class SumAttrs(object):
