@@ -20,21 +20,26 @@ import pickle
 import os
 import sys
 
-'''
-def num_from_vtx(v):
-	try:
-		prefix = v.split('.')[-1]
-		return int(''.join(chr for chr in prefix if chr.isdigit()))
-	except:
-		message = "Can't extract number from %s" % v
-		sys.exit(message)
-'''
+
+sp_path = 'd:\\.work\\.chrs\\.sp'
+create_bones = False
+
+
+def toggle_on_off(*args):
+	global create_bones
+	if create_bones == True:
+		create_bones = False
+	else:
+		create_bones = True
+
+
 def get_skin_cluster(mesh):
 	skin_cluster = cmds.ls(cmds.listHistory(mesh),type='skinCluster')
 	if skin_cluster: 
 		skin_cluster = skin_cluster[0]
 	else: skin_cluster = None
 	return skin_cluster
+
 
 def exists(objects):
 	'''
@@ -61,7 +66,6 @@ def exists(objects):
 		print 'Types "str", "list" are accepted only'
 		return False       
 
-sp_path = 'd:\\.work\\.chrs\\.sp'
 
 def export_weights_sp(*args):
 	
@@ -98,8 +102,7 @@ def export_weights_sp(*args):
 def import_weights_sp(*args):
 	
 	global sp_path
-	# Disable warnings
-	cmds.scriptEditorInfo(sw=True)
+	# cmds.scriptEditorInfo(sw=True)
 	selected_objects = cmds.ls(selection=True, flatten=True, transforms=True)
 	if not selected_objects:
 		sys.exit('Please, select objects to save skin from')
@@ -129,13 +132,25 @@ def import_weights_sp(*args):
 	
 	bones = list(set(bones))
 	stop_bones = []
+	
 	for bone in bones:
 		if not cmds.objExists(bone):
 			print '%s not found' % bone
 			stop_bones.append(bone)
+	
 	if stop_bones:
-		print stop_bones
-		sys.exit('Please, rename or add bones to import weights')
+		if create_bones == False:
+			sys.exit('Please, rename or add bones to import weights')
+		else:
+			tmp_grp = cmds.group(empty=True, name='tmp_bones')
+			
+			for b in stop_bones:
+				cmds.select(clear=True)
+				cmds.joint(name=b)
+				cmds.parent(b, tmp_grp)
+			
+			print 'Temporary bones created.'
+				
 
 	# Check if skin cluster is on onject
 	for o, data in o_data.iteritems():
@@ -160,22 +175,27 @@ def import_weights_sp(*args):
 		cmds.columnLayout()
 		progressControl = cmds.progressBar(maxValue=progress, width=300)
 		cmds.showWindow(progress_window)
-
 		pr = 0
+		
 		for id, value in data.iteritems():
 			pr += 1
 			progressInc = cmds.progressBar(progressControl, edit=True, pr=pr)
 			cmds.skinPercent(sc, '%s.vtx[%s]' % (o, id), transformValue=value)
+		
+		cmds.skinCluster(sc, forceNormalizeWeights=True, edit=True)
 		cmds.progressBar(progressControl, edit=True, endProgress=True) 
 		cmds.deleteUI(progress_window, window=True)
 		print 'Loaded skin for %s' % o
-	cmds.scriptEditorInfo(sw=False)    
+	
+	# cmds.scriptEditorInfo(sw=False)    
+
 
 #gui    
 cmds.window('Import Export', width=250)
 cmds.columnLayout( adjustableColumn=True )
 cmds.button(label='Import', command=import_weights_sp)
 cmds.button(label='Export', command=export_weights_sp)
+cmds.checkBox( label='Create missing bones', onc=toggle_on_off, ofc=toggle_on_off, value=False)
 cmds.showWindow()
 
 
