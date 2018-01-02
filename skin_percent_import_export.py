@@ -105,7 +105,7 @@ def import_weights_sp(*args):
 	# cmds.scriptEditorInfo(sw=True)
 	selected_objects = cmds.ls(selection=True, flatten=True, transforms=True)
 	if not selected_objects:
-		sys.exit('Please, select objects to save skin from')
+		sys.exit('Please, select objects to load skin to.')
 	# Check if skin is saved
 	o_path = {}
 	
@@ -167,7 +167,7 @@ def import_weights_sp(*args):
 		else:
 			# Now, not defining unique name for every skin cluster
 			# If no - assign with bones in saved
-			sc = cmds.skinCluster(o, o_bones[o], mi=4, wt=0)[0]
+			sc = cmds.skinCluster(o, o_bones[o], mi=4, wt=0, tsb=True)[0]
 
 		vtxs = cmds.polyEvaluate(o, v=True)
 		progress = vtxs+1
