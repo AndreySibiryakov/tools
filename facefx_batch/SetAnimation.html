@@ -1,0 +1,881 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module SetAnimation</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>SetAnimation</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:///U:/face/scripts/facefx_batch/setanimation.py">u:\face\scripts\facefx_batch\setanimation.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;from&nbsp;FxStudio&nbsp;import&nbsp;*<br>
+#&nbsp;from&nbsp;FxAnimation&nbsp;import&nbsp;*</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="base_config.html">base_config</a><br>
+<a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="pickle.html">pickle</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="SetAnimation.html#SetAnimation">SetAnimation</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SetAnimation">class <strong>SetAnimation</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SetAnimation-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SetAnimation-add_animation"><strong>add_animation</strong></a>(self, animset, anim)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-add_animset"><strong>add_animset</strong></a>(self, animset)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str)&nbsp;animset&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-add_curve"><strong>add_curve</strong></a>(self, animset, anim, curve)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;curve&nbsp;(str):&nbsp;curve&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-add_custom_persist_event"><strong>add_custom_persist_event</strong></a>(self, animset, anim, event)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event&nbsp;(str):&nbsp;event&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-add_event"><strong>add_event</strong></a>(self, animset, anim, event, min_time)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event&nbsp;(str):&nbsp;event&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;min_time&nbsp;(float):&nbsp;event&nbsp;start&nbsp;time<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-add_mocap_depressor"><strong>add_mocap_depressor</strong></a>(self, animset, anim)</dt><dd><tt>Creates&nbsp;curve,&nbsp;called&nbsp;'facefx_to_mocap_depressor'<br>
+in&nbsp;facefx&nbsp;animation.<br>
+Curve&nbsp;depresses&nbsp;mocap&nbsp;animation&nbsp;while&nbsp;facefx&nbsp;animation&nbsp;playing,<br>
+if&nbsp;any&nbsp;mocap&nbsp;animation&nbsp;is&nbsp;playing&nbsp;alongside&nbsp;the&nbsp;facefx.<br>
+Curve&nbsp;name&nbsp;is&nbsp;hardcoded.<br>
+Curve&nbsp;start&nbsp;and&nbsp;end&nbsp;time&nbsp;is&nbsp;taken&nbsp;from&nbsp;the&nbsp;lenght&nbsp;of&nbsp;the<br>
+'Rate&nbsp;of&nbsp;Speech&nbsp;Scale'&nbsp;curve.<br>
+Curve&nbsp;that&nbsp;always&nbsp;present&nbsp;among&nbsp;lipsync&nbsp;curves.<br>
+If&nbsp;not,&nbsp;phrase&nbsp;is&nbsp;already&nbsp;too&nbsp;short&nbsp;for&nbsp;depression.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-add_payload"><strong>add_payload</strong></a>(self, animset, anim, min_s, pl_text)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;min_s&nbsp;(float):&nbsp;start&nbsp;time&nbsp;of&nbsp;the&nbsp;payload<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pl_text&nbsp;(str):&nbsp;payload&nbsp;text<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-analyze_sound"><strong>analyze_sound</strong></a>(self, path, group, name)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+Main&nbsp;command&nbsp;that&nbsp;processes&nbsp;sound&nbsp;to&nbsp;animation.<br>
+Analysis&nbsp;actor&nbsp;in&nbsp;taken&nbsp;from&nbsp;"cfg.aa".<br>
+Language&nbsp;is&nbsp;taken&nbsp;from&nbsp;"self.<strong>cur_a_lang</strong>".<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;(str):&nbsp;sound&nbsp;path<br>
+&nbsp;&nbsp;&nbsp;&nbsp;group&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-animation_exists"><strong>animation_exists</strong></a>(self, animset, anim)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-animset_exists"><strong>animset_exists</strong></a>(self, animset)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-batch_lang"><strong>batch_lang</strong></a>(self, lang)</dt><dd><tt>Processes&nbsp;animations&nbsp;for&nbsp;current&nbsp;language.<br>
+Animations&nbsp;is&nbsp;taken&nbsp;from&nbsp;"self.<strong>current_batch_data</strong>".<br>
+Lang&nbsp;is&nbsp;set&nbsp;to&nbsp;"self.<strong>cur_lang</strong>".<br>
+&nbsp;<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lang&nbsp;(str):&nbsp;current&nbsp;processing&nbsp;language<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-batch_langs"><strong>batch_langs</strong></a>(self)</dt><dd><tt>Launches&nbsp;animation&nbsp;process&nbsp;for&nbsp;every&nbsp;language<br>
+in&nbsp;"cfg.langs"&nbsp;facefx&nbsp;config<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-calc_blend_times"><strong>calc_blend_times</strong></a>(self, min_t, max_t)</dt><dd><tt>Builds&nbsp;mocap&nbsp;depressor&nbsp;curve&nbsp;for&nbsp;facefx&nbsp;process.<br>
+Blends&nbsp;hardcoded&nbsp;in&nbsp;method.<br>
+Returns&nbsp;None,&nbsp;None&nbsp;if&nbsp;animation&nbsp;is&nbsp;too&nbsp;short&nbsp;to&nbsp;add&nbsp;curve<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;min_t&nbsp;(float):&nbsp;animation&nbsp;start&nbsp;time<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max_t&nbsp;(float):&nbsp;animation&nbsp;end&nbsp;time<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tuple:&nbsp;depressor&nbsp;curve&nbsp;data&nbsp;list&nbsp;recognized&nbsp;by&nbsp;facefx&nbsp;and&nbsp;keys&nbsp;value&nbsp;list&nbsp;or&nbsp;None,&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-calc_slope"><strong>calc_slope</strong></a>(self, a_frame, a_value, b_frame, b_value)</dt><dd><tt>Calculates&nbsp;linear&nbsp;tangent&nbsp;for&nbsp;key<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a_frame&nbsp;(float):&nbsp;current&nbsp;frame<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a_value&nbsp;(float):&nbsp;current&nbsp;frame&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;b_frame&nbsp;(float):&nbsp;next&nbsp;frame<br>
+&nbsp;&nbsp;&nbsp;&nbsp;b_value&nbsp;(float):&nbsp;next&nbsp;frame&nbsp;value<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-check_cfg"><strong>check_cfg</strong></a>(self)</dt><dd><tt>Checks&nbsp;if&nbsp;config&nbsp;path&nbsp;variables&nbsp;exists.<br>
+Takes&nbsp;variables&nbsp;from&nbsp;"cfg&nbsp;=&nbsp;base_config.Config()".<br>
+Analyses&nbsp;only&nbsp;str&nbsp;type&nbsp;variables.<br>
+Uses&nbsp;'us'&nbsp;lang&nbsp;for&nbsp;{lang}&nbsp;variable&nbsp;formatting.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-check_sound"><strong>check_sound</strong></a>(self, i)</dt><dd><tt>Verifies&nbsp;True&nbsp;and&nbsp;False&nbsp;conditions&nbsp;for&nbsp;sound&nbsp;path&nbsp;to&nbsp;match.<br>
+Conditions&nbsp;are&nbsp;set&nbsp;in&nbsp;"cfg.true_conditions"&nbsp;and&nbsp;"cfg.false_conditions".<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;(str):&nbsp;sound&nbsp;path<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;boolean:</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-close_actor"><strong>close_actor</strong></a>(self)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-create_empty_animset"><strong>create_empty_animset</strong></a>(self, animset)</dt><dd><tt>Creates&nbsp;empty&nbsp;animset&nbsp;and&nbsp;exports&nbsp;it<br>
+to&nbsp;"cfg.animsets_dir.format(lang=self.<strong>cur_lang</strong>))".<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-create_missing_animsets"><strong>create_missing_animsets</strong></a>(self)</dt><dd><tt>Creates&nbsp;empty&nbsp;animsets&nbsp;that&nbsp;are&nbsp;set&nbsp;in&nbsp;facefx&nbsp;config,<br>
+but&nbsp;not&nbsp;exists&nbsp;in&nbsp;"self.<strong>animsets_data</strong>".<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-custom_facefx_anim_process"><strong>custom_facefx_anim_process</strong></a>(self)</dt><dd><tt>Facefx&nbsp;process&nbsp;with&nbsp;special&nbsp;conditions.<br>
+Initial&nbsp;purpose&nbsp;for&nbsp;modifying&nbsp;existing&nbsp;animations.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-custom_mocap_anim_process"><strong>custom_mocap_anim_process</strong></a>(self)</dt><dd><tt>Mocap&nbsp;process&nbsp;with&nbsp;special&nbsp;conditions.<br>
+Initial&nbsp;purpose&nbsp;for&nbsp;modifying&nbsp;existing&nbsp;animations.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-default_facefx_anim_process"><strong>default_facefx_anim_process</strong></a>(self)</dt><dd><tt>Creates&nbsp;single&nbsp;animation&nbsp;from&nbsp;the&nbsp;sound&nbsp;and&nbsp;subtitles.<br>
+Smooths&nbsp;curves,&nbsp;rebuilds&nbsp;built-in&nbsp;facefx&nbsp;curves.<br>
+Adds&nbsp;"cfg.lipsync_payload"&nbsp;payload&nbsp;and&nbsp;mocap&nbsp;depressor&nbsp;curve.<br>
+Animation&nbsp;data&nbsp;is&nbsp;taken&nbsp;from&nbsp;"self.<strong>current_anim_data</strong>".<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-default_mocap_anim_process"><strong>default_mocap_anim_process</strong></a>(self)</dt><dd><tt>Creates&nbsp;single&nbsp;mocap&nbsp;animation.<br>
+Takes&nbsp;names&nbsp;of&nbsp;animation&nbsp;data&nbsp;from&nbsp;"self.<strong>current_anim_data</strong>".<br>
+Takes&nbsp;curves&nbsp;and&nbsp;values&nbsp;are&nbsp;from&nbsp;json&nbsp;file.<br>
+Takes&nbsp;value&nbsp;of&nbsp;"cfg.file_path"&nbsp;in&nbsp;"self.<strong>current_anim_data</strong>".<br>
+Builds&nbsp;linear&nbsp;tangents&nbsp;(slopes).<br>
+Adds&nbsp;mocap&nbsp;payload&nbsp;"cfg.mocap_payload".<br>
+Nutes&nbsp;facefx&nbsp;tag&nbsp;emotions.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-delete_anims_from_animset"><strong>delete_anims_from_animset</strong></a>(self, animset, anims)</dt><dd><tt>Deletes&nbsp;given&nbsp;animations&nbsp;from&nbsp;animset<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anims&nbsp;(list):&nbsp;animation&nbsp;names<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-det_pickle_data"><strong>det_pickle_data</strong></a>(self, path)</dt><dd><tt>Loads&nbsp;mocap&nbsp;animation&nbsp;data&nbsp;from&nbsp;"pickle"<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;(str):<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-exclude_anims"><strong>exclude_anims</strong></a>(self)</dt><dd><tt>Deletes&nbsp;defined&nbsp;animations&nbsp;from<br>
+"self.<strong>current_batch_data</strong>".&nbsp;<br>
+Which&nbsp;were&nbsp;manually&nbsp;corrected&nbsp;f.e.<br>
+Excluded&nbsp;animations&nbsp;are&nbsp;taken&nbsp;from&nbsp;"cfg.excluded"&nbsp;dict<br>
+where&nbsp;{'lang':[anim_names]}.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-export_animset"><strong>export_animset</strong></a>(self, animset, dir)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-frames_to_time"><strong>frames_to_time</strong></a>(self, frame, fps<font color="#909090">=30</font>)</dt><dd><tt>Converts&nbsp;frame&nbsp;number&nbsp;to&nbsp;time&nbsp;in&nbsp;milliseconds.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;frame&nbsp;(int)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fps&nbsp;(int,&nbsp;float)<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_anim_names"><strong>get_anim_names</strong></a>(self, animset)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;animation&nbsp;names&nbsp;present&nbsp;in&nbsp;animset</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_anims_data_to_batch"><strong>get_anims_data_to_batch</strong></a>(self)</dt><dd><tt>Collects&nbsp;animation&nbsp;data&nbsp;for&nbsp;a&nbsp;given&nbsp;cfg.anims.<br>
+If&nbsp;cfg.anims&nbsp;set&nbsp;in&nbsp;facefx&nbsp;config.<br>
+If&nbsp;cfg.batch_mocap&nbsp;is&nbsp;set,&nbsp;first&nbsp;looks&nbsp;up&nbsp;in&nbsp;self.<strong>mocap_db</strong>.<br>
+If&nbsp;not&nbsp;found,&nbsp;uses&nbsp;self.<strong>facefx_db</strong>.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;list&nbsp;of&nbsp;dicts</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_animsets_data"><strong>get_animsets_data</strong></a>(self)</dt><dd><tt>Collects&nbsp;animset&nbsp;files&nbsp;from&nbsp;the&nbsp;root&nbsp;of&nbsp;"cfg.animsets_dir"<br>
+of&nbsp;the&nbsp;current&nbsp;processing&nbsp;lang.&nbsp;Assignes&nbsp;data&nbsp;to&nbsp;"self.<strong>animsets_data</strong>"<br>
+as&nbsp;{animset_name:&nbsp;animset&nbsp;path}.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_animsets_data_to_batch"><strong>get_animsets_data_to_batch</strong></a>(self)</dt><dd><tt>Collects&nbsp;anim&nbsp;data&nbsp;for&nbsp;a&nbsp;given&nbsp;cfg.animsets.<br>
+If&nbsp;cfg.animsets&nbsp;set&nbsp;in&nbsp;facefx&nbsp;config.<br>
+If&nbsp;cfg.batch_mocap&nbsp;is&nbsp;set,&nbsp;first&nbsp;looks&nbsp;up&nbsp;in&nbsp;self.<strong>mocap_db</strong>.<br>
+If&nbsp;not&nbsp;found,&nbsp;uses&nbsp;self.<strong>facefx_db</strong>.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;list&nbsp;of&nbsp;dicts</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_data"><strong>get_data</strong></a>(self, path)</dt><dd><tt>Loads&nbsp;animation&nbsp;data&nbsp;from&nbsp;"json"<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;(str):<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;list&nbsp;of&nbsp;dicts</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_data_from_db"><strong>get_data_from_db</strong></a>(self, db, key, value)</dt><dd><tt>Searches&nbsp;for&nbsp;sound&nbsp;file&nbsp;in&nbsp;"self.<strong>facefx_db</strong>"&nbsp;that&nbsp;matches&nbsp;mocap&nbsp;animation.<br>
+Loads&nbsp;facefx&nbsp;database&nbsp;if&nbsp;not&nbsp;loaded,&nbsp;but&nbsp;doesn't&nbsp;update&nbsp;facefx&nbsp;database.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;db&nbsp;(list):&nbsp;list&nbsp;of&nbsp;dicts<br>
+&nbsp;&nbsp;&nbsp;&nbsp;key&nbsp;(str):&nbsp;one&nbsp;of&nbsp;data&nbsp;keys&nbsp;from&nbsp;base_config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;(str):<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str:&nbsp;sound&nbsp;file&nbsp;path&nbsp;or&nbsp;empty&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_data_to_batch"><strong>get_data_to_batch</strong></a>(self)</dt><dd><tt>Collects&nbsp;anim&nbsp;data&nbsp;for&nbsp;batch&nbsp;process.<br>
+Depends&nbsp;if&nbsp;"cfg.anims"&nbsp;or&nbsp;"cfg.animsets"&nbsp;set&nbsp;in&nbsp;facefx&nbsp;config.<br>
+Data&nbsp;assignes&nbsp;to&nbsp;"self.<strong>current_batch_data</strong>"<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_facefx_data"><strong>get_facefx_data</strong></a>(self)</dt><dd><tt>Collects&nbsp;facefx&nbsp;animation&nbsp;information&nbsp;into&nbsp;list&nbsp;of&nbsp;dicts:<br>
+{animset:&nbsp;None,<br>
+anim:&nbsp;None,<br>
+file_path:&nbsp;None,<br>
+anim_type:&nbsp;'facefx'}<br>
+File&nbsp;path&nbsp;is&nbsp;.flac&nbsp;path.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;list&nbsp;of&nbsp;dicts</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_facefx_db"><strong>get_facefx_db</strong></a>(self)</dt><dd><tt>Creates&nbsp;facefx&nbsp;database&nbsp;and&nbsp;assigns&nbsp;to&nbsp;"self.<strong>facefx_db</strong>".<br>
+Saves&nbsp;database&nbsp;to&nbsp;cfg.facefx_data_path.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_min_max_times"><strong>get_min_max_times</strong></a>(self, data)</dt><dd><tt>Gets&nbsp;start&nbsp;and&nbsp;end&nbsp;time&nbsp;of&nbsp;animation.<br>
+Data&nbsp;comes&nbsp;from&nbsp;facefx&nbsp;method&nbsp;"getKeys()"<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;(tuple):&nbsp;list&nbsp;of&nbsp;times&nbsp;and&nbsp;list&nbsp;of&nbsp;values&nbsp;of&nbsp;animation<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tuple:&nbsp;start&nbsp;and&nbsp;end&nbsp;time</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_mocap_data"><strong>get_mocap_data</strong></a>(self)</dt><dd><tt>Collects&nbsp;mocap&nbsp;animation&nbsp;information&nbsp;into&nbsp;list&nbsp;of&nbsp;dicts:<br>
+{animset:&nbsp;None,<br>
+anim:&nbsp;None,<br>
+file_path:&nbsp;None,<br>
+anim_type:&nbsp;'mocap',<br>
+sound_path:&nbsp;None}<br>
+Mocap&nbsp;data&nbsp;stored&nbsp;in&nbsp;.json&nbsp;format&nbsp;and&nbsp;collected&nbsp;from&nbsp;"cfg.mocap_to_facefx_dir".<br>
+File&nbsp;path&nbsp;is&nbsp;.txt&nbsp;path.<br>
+Sound&nbsp;path&nbsp;is&nbsp;.flac&nbsp;path&nbsp;if&nbsp;found&nbsp;with&nbsp;"self.<a href="#SetAnimation-get_sound_path_for_mocap_anim">get_sound_path_for_mocap_anim</a>(anim_name)"<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;list&nbsp;of&nbsp;dicts</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_mocap_db"><strong>get_mocap_db</strong></a>(self)</dt><dd><tt>Creates&nbsp;mocap&nbsp;database&nbsp;and&nbsp;assigns&nbsp;to&nbsp;"self.<strong>mocap_db</strong>".<br>
+Saves&nbsp;database&nbsp;to&nbsp;cfg.mocap_data_path.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_root_subdirs"><strong>get_root_subdirs</strong></a>(self)</dt><dd><tt>Gets&nbsp;sound&nbsp;VO&nbsp;dirs.<br>
+Every&nbsp;dir&nbsp;represents&nbsp;separate&nbsp;level&nbsp;of&nbsp;the&nbsp;game.<br>
+Directory&nbsp;name&nbsp;is&nbsp;taken&nbsp;from&nbsp;"cfg.sounds_dir.format(lang=self.<strong>cur_lang</strong>)".<br>
+Directory&nbsp;is&nbsp;taken&nbsp;if&nbsp;"cfg.key"&nbsp;in&nbsp;name.<br>
+For&nbsp;Metro&nbsp;Exodus&nbsp;it&nbsp;is&nbsp;"m3"&nbsp;suffix.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;sounds&nbsp;VO&nbsp;dirs&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_sound_path_for_mocap_anim"><strong>get_sound_path_for_mocap_anim</strong></a>(self, anim)</dt><dd><tt>Searches&nbsp;for&nbsp;sound&nbsp;file&nbsp;in&nbsp;"self.<strong>facefx_db</strong>"&nbsp;that&nbsp;matches&nbsp;mocap&nbsp;animation.<br>
+Loads&nbsp;facefx&nbsp;database&nbsp;if&nbsp;not&nbsp;loaded,&nbsp;but&nbsp;doesn't&nbsp;update&nbsp;facefx&nbsp;database.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str:&nbsp;sound&nbsp;file&nbsp;path&nbsp;or&nbsp;empty&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-get_sounds"><strong>get_sounds</strong></a>(self, dir)</dt><dd><tt>Collects&nbsp;sound&nbsp;paths&nbsp;with&nbsp;"os.walk"&nbsp;from&nbsp;a&nbsp;given&nbsp;directory.<br>
+"self.<strong>check_sound</strong>"&nbsp;is&nbsp;applied&nbsp;to&nbsp;results.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dir&nbsp;(str):&nbsp;directory&nbsp;to&nbsp;search&nbsp;in<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-insert_key"><strong>insert_key</strong></a>(self, time, value, slope_in, slope_out)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;time&nbsp;(float):&nbsp;key&nbsp;time&nbsp;in&nbsp;milliseconds<br>
+&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;(float):&nbsp;key&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;slope_in&nbsp;(float):&nbsp;in&nbsp;tangent&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;slope_out&nbsp;(float):&nbsp;out&nbsp;tangent&nbsp;value<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-load_actor"><strong>load_actor</strong></a>(self)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+Operates&nbsp;"cfg.actor"&nbsp;variable.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-load_db"><strong>load_db</strong></a>(self)</dt><dd><tt>Loads&nbsp;mocap&nbsp;and&nbsp;facefx&nbsp;database<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-mount_animset"><strong>mount_animset</strong></a>(self, path)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;(str):&nbsp;animset&nbsp;path<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-move_animation"><strong>move_animation</strong></a>(self, a_set, b_set, anim)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a_set&nbsp;(str):&nbsp;source&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;b_set&nbsp;(str):&nbsp;target&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-move_face_idles_to_events"><strong>move_face_idles_to_events</strong></a>(self)</dt><dd><tt>Moves&nbsp;mocap&nbsp;idle&nbsp;animations&nbsp;to&nbsp;"cfg.face_idle_animset_name"<br>
+animset.<br>
+Substituting&nbsp;animations&nbsp;with&nbsp;events.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-mute_emotions"><strong>mute_emotions</strong></a>(self, animset, anim, min_time)</dt><dd><tt>Depresses&nbsp;to&nbsp;zero&nbsp;facefx&nbsp;tag&nbsp;emotions&nbsp;in&nbsp;mocap&nbsp;animation.<br>
+Takes&nbsp;list&nbsp;of&nbsp;tags&nbsp;from&nbsp;"cfg.tag_emotions"<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;min_time&nbsp;(float):&nbsp;event&nbsp;start<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-normalize_value"><strong>normalize_value</strong></a>(self, v, min_v, max_v)</dt><dd><tt>Normalizes&nbsp;single&nbsp;curve&nbsp;value.<br>
+Used&nbsp;for&nbsp;processing&nbsp;"Stress"&nbsp;internal&nbsp;facefx&nbsp;curve.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v&nbsp;(float):&nbsp;curve&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;min_v&nbsp;(float):&nbsp;minimum&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max_v&nbsp;(float):&nbsp;maximum&nbsp;value<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;float:</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-process_U_curve"><strong>process_U_curve</strong></a>(self, animset, anim)</dt><dd><tt>Custom&nbsp;process&nbsp;for&nbsp;U&nbsp;curve.<br>
+Combines&nbsp;frequent&nbsp;short&nbsp;curve&nbsp;calls&nbsp;to&nbsp;constant&nbsp;animation.<br>
+And&nbsp;normalizes&nbsp;curve&nbsp;values.<br>
+Imitates&nbsp;muscle&nbsp;tention.<br>
+Curve&nbsp;name&nbsp;is&nbsp;hardcoded.<br>
+"W"&nbsp;curve&nbsp;is&nbsp;deleted&nbsp;if&nbsp;exists.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;anim&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-process_anim"><strong>process_anim</strong></a>(self)</dt><dd><tt>Redirects&nbsp;process&nbsp;to&nbsp;mocap&nbsp;or&nbsp;facefx<br>
+based&nbsp;on&nbsp;"cfg.anim_type"&nbsp;key&nbsp;in&nbsp;"self.<strong>current_anim_data</strong>".<br>
+Temporary&nbsp;mocap&nbsp;for&nbsp;us&nbsp;English&nbsp;only<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-process_facefx_anim"><strong>process_facefx_anim</strong></a>(self)</dt><dd><tt>Redirects&nbsp;facefx&nbsp;process&nbsp;method<br>
+to&nbsp;custom&nbsp;or&nbsp;default&nbsp;depends<br>
+on&nbsp;"cfg.custom_process"&nbsp;state&nbsp;in&nbsp;facefx&nbsp;config<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-process_mocap_anim"><strong>process_mocap_anim</strong></a>(self)</dt><dd><tt>Redirects&nbsp;mocap&nbsp;process&nbsp;method<br>
+to&nbsp;custom&nbsp;or&nbsp;default&nbsp;depends<br>
+on&nbsp;"cfg.custom_process"&nbsp;state&nbsp;in&nbsp;facefx&nbsp;config<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-process_stress_curve"><strong>process_stress_curve</strong></a>(self, animset, anim)</dt><dd><tt>Makes&nbsp;internal&nbsp;facefx&nbsp;curve&nbsp;useful&nbsp;for&nbsp;facefx&nbsp;animation.<br>
+"low&nbsp;lip&nbsp;down"&nbsp;node&nbsp;is&nbsp;connected&nbsp;to&nbsp;"Stress"&nbsp;curve.<br>
+Normalizes&nbsp;it&nbsp;and&nbsp;double&nbsp;smooths&nbsp;keys&nbsp;on&nbsp;curve.<br>
+Stress&nbsp;curve&nbsp;name&nbsp;is&nbsp;hardcoded.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;anim&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-publish_actor_go"><strong>publish_actor_go</strong></a>(self)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+Simple&nbsp;command&nbsp;for&nbsp;publishing&nbsp;content&nbsp;to&nbsp;engine.<br>
+All&nbsp;settings&nbsp;is&nbsp;taken&nbsp;from&nbsp;"self.<a href="#SetAnimation-set_console_vars">set_console_vars</a>()"&nbsp;method<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-publish_lang"><strong>publish_lang</strong></a>(self, lang)</dt><dd><tt>Publishes&nbsp;animations&nbsp;for&nbsp;current&nbsp;language.<br>
+Animations&nbsp;is&nbsp;taken&nbsp;from&nbsp;"self.<strong>current_batch_data</strong>".<br>
+Lang&nbsp;is&nbsp;set&nbsp;to&nbsp;"self.<strong>cur_lang</strong>".<br>
+Publish&nbsp;is&nbsp;set&nbsp;per&nbsp;animset&nbsp;to&nbsp;avoid&nbsp;memory&nbsp;crashes.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lang&nbsp;(str):&nbsp;current&nbsp;processing&nbsp;language<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-publish_langs"><strong>publish_langs</strong></a>(self)</dt><dd><tt>Launches&nbsp;animation&nbsp;publish&nbsp;process&nbsp;for&nbsp;every&nbsp;language<br>
+in&nbsp;"cfg.langs"&nbsp;facefx&nbsp;config<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-query_anim_data_item"><strong>query_anim_data_item</strong></a>(self, db, alt_db, anim)</dt><dd><tt>Searches&nbsp;for&nbsp;animation&nbsp;data&nbsp;in&nbsp;the&nbsp;main&nbsp;database&nbsp;first.<br>
+If&nbsp;not&nbsp;found,&nbsp;searches&nbsp;in&nbsp;alternative&nbsp;database.<br>
+Uses&nbsp;short&nbsp;name&nbsp;"cfg.anim_short"&nbsp;without&nbsp;facefx&nbsp;slashes<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;db&nbsp;(list):&nbsp;main&nbsp;database<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alt_db&nbsp;(list):&nbsp;alternative&nbsp;database<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim_name&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:&nbsp;animation&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-reduce_U_gaps"><strong>reduce_U_gaps</strong></a>(self, data, diff_delta<font color="#909090">=0.1</font>)</dt><dd><tt>Deletes&nbsp;every&nbsp;key&nbsp;between&nbsp;two&nbsp;ones,<br>
+which&nbsp;value&nbsp;difference&nbsp;is&nbsp;greater&nbsp;than&nbsp;"diff_delta"<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;(list):&nbsp;animation&nbsp;data&nbsp;obtained&nbsp;from&nbsp;"getKeys()"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;diff_delta&nbsp;(float,&nbsp;optional):&nbsp;min&nbsp;max&nbsp;value&nbsp;threshold&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;gap&nbsp;to&nbsp;be&nbsp;detected<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;processed&nbsp;animation&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-remove_animation"><strong>remove_animation</strong></a>(self, animset, animation)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-remove_curve"><strong>remove_curve</strong></a>(self, animset, anim, curve)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;curve&nbsp;(str):&nbsp;curve&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-rename_animation"><strong>rename_animation</strong></a>(self, animset, a_name, b_name)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a_name&nbsp;(str):&nbsp;current&nbsp;anim&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;b_name&nbsp;(str):&nbsp;new&nbsp;anim&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-run"><strong>run</strong></a>(self)</dt><dd><tt>Initiates&nbsp;batch&nbsp;process.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-save_actor"><strong>save_actor</strong></a>(self)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+Operates&nbsp;"cfg.actor"&nbsp;variable.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-select_animation"><strong>select_animation</strong></a>(self, animation)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animation&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-select_curve"><strong>select_curve</strong></a>(self, curve)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;curve&nbsp;(str):&nbsp;curve&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-set_analyze_lang"><strong>set_analyze_lang</strong></a>(self)</dt><dd><tt>Sets&nbsp;language&nbsp;for&nbsp;facefx&nbsp;analyze&nbsp;command,<br>
+that&nbsp;used&nbsp;in&nbsp;"<a href="#SetAnimation-analyze_sound">analyze_sound</a>(self,&nbsp;path,&nbsp;group,&nbsp;name)".<br>
+Identifies&nbsp;lang&nbsp;by&nbsp;dict&nbsp;mapping&nbsp;in&nbsp;"cfg.a_langs".<br>
+Substitues&nbsp;any&nbsp;unrecognized&nbsp;langs&nbsp;by&nbsp;US&nbsp;English.<br>
+Assignes&nbsp;value&nbsp;to&nbsp;a&nbsp;string&nbsp;variable&nbsp;"self.<strong>cur_a_lang</strong>".<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-set_console_vars"><strong>set_console_vars</strong></a>(self)</dt><dd><tt>Sets&nbsp;global&nbsp;facefx&nbsp;vars.<br>
+Sets&nbsp;up&nbsp;conditions&nbsp;for&nbsp;publishing&nbsp;packages&nbsp;to&nbsp;engine.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-set_curve_to_manual"><strong>set_curve_to_manual</strong></a>(self, animset, anim, curve)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+Sets&nbsp;curve&nbsp;to&nbsp;manual&nbsp;mode.<br>
+Curve&nbsp;can&nbsp;be&nbsp;edited&nbsp;in&nbsp;manual&nbsp;mode&nbsp;only.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;curve&nbsp;(str):&nbsp;curve&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-set_data"><strong>set_data</strong></a>(self, path, data)</dt><dd><tt>Dumps&nbsp;animation&nbsp;data&nbsp;to&nbsp;"json".<br>
+Truncates&nbsp;file&nbsp;content.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;(str):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;(list):&nbsp;list&nbsp;of&nbsp;dicts<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-set_event_persist"><strong>set_event_persist</strong></a>(self, animset, anim)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+Works&nbsp;only&nbsp;with&nbsp;&nbsp;"self.<a href="#SetAnimation-move_face_idles_to_events">move_face_idles_to_events</a>()"&nbsp;method<br>
+Event&nbsp;id&nbsp;is&nbsp;hardcoded.<br>
+So,&nbsp;will&nbsp;work&nbsp;with&nbsp;every&nbsp;single&nbsp;event&nbsp;once&nbsp;created&nbsp;only.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-set_framerate"><strong>set_framerate</strong></a>(self, animset, anim)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-smooth_animation"><strong>smooth_animation</strong></a>(self, animset, anim, curves)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;curves&nbsp;(list):&nbsp;curve&nbsp;names<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-smooth_curves"><strong>smooth_curves</strong></a>(self, animset, anim)</dt><dd><tt>Reduces&nbsp;keys&nbsp;on&nbsp;a&nbsp;given&nbsp;curves&nbsp;with&nbsp;internal<br>
+facefx&nbsp;smoothing&nbsp;algorithm.<br>
+Takes&nbsp;list&nbsp;of&nbsp;curves&nbsp;from&nbsp;"cfg.smooth_curves"<br>
+Sets&nbsp;first&nbsp;and&nbsp;the&nbsp;last&nbsp;keys&nbsp;to&nbsp;zero&nbsp;for&nbsp;smoothing&nbsp;curves.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anim&nbsp;(str):&nbsp;animation&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-split_sound"><strong>split_sound</strong></a>(self, sound_path)</dt><dd><tt>Splits&nbsp;sound_path&nbsp;to&nbsp;chunks:<br>
+sound&nbsp;path,&nbsp;animset,&nbsp;anim<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sound_path&nbsp;(str):<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tuple:&nbsp;sound&nbsp;path,&nbsp;animset&nbsp;name,&nbsp;anim&nbsp;name<br>
+&nbsp;<br>
+Examples:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#SetAnimation-split_sound">split_sound</a>(r'c:\SVN\content\sounds.usoices\m3_12_valleyal_003_80_alchemist_01_09_01.flac')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(r'c:\SVN\content\sounds.usoices\m3_12_valleyal_003_80_alchemist_01_09_01.flac',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'m3_12_valley',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'voices\m3_12_valley\val_003_80_alchemist_01_09_01')</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-unmount_animset"><strong>unmount_animset</strong></a>(self, animset)</dt><dd><tt>Facefx&nbsp;python&nbsp;wrapped&nbsp;command.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animset&nbsp;(str):&nbsp;animset&nbsp;name<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SetAnimation-update_db"><strong>update_db</strong></a>(self)</dt><dd><tt>Updates&nbsp;mocap&nbsp;and&nbsp;facefx&nbsp;database<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-issueCommand"><strong>issueCommand</strong></a>(*args, **kwargs)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>cfg</strong> = &lt;base_config.Config object&gt;<br>
+<strong>sa</strong> = &lt;SetAnimation.SetAnimation object&gt;</td></tr></table>
+</body></html>
